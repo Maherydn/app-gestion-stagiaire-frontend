@@ -55,6 +55,7 @@ export const AdminTableUsers = () => {
                             <th className="px-4 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-blue-500 tracking-wider">email</th>
                             <th className="px-4 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-blue-500 tracking-wider">Role</th>
                             <th className="px-4 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-blue-500 tracking-wider">Matricule</th>
+                            <th className="px-4 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-blue-500 tracking-wider">Departement</th>
                             <th className="px-4 py-3 border-b-2 border-gray-300"></th>
                         </tr>
                     </thead>
@@ -71,6 +72,9 @@ export const AdminTableUsers = () => {
                                 <td className="px-4 py-2 border-b text-blue-900 border-gray-500 text-sm leading-5">{data.roles[0]}</td>
                                 <td className="px-4 py-2 border-b border-gray-500 text-sm leading-5 text-blue-900">
                                     {data.matricule} 
+                                </td>
+                                <td className="px-4 py-2 border-b border-gray-500 text-sm leading-5 text-blue-900">
+                                    {data.departement.name} 
                                 </td>
                                 <td  className="px-4 py-2 text-right border-b border-gray-500 text-sm leading-5 space-x-2">
                                     <button className="px-5 py-2 border-slate-500 border text-slate-500 rounded-xl transition duration-300 hover:bg-slate-700 hover:text-white focus:outline-none"

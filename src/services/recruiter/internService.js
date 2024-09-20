@@ -2,7 +2,7 @@ import axios from 'axios';
 
 // Créer une instance d'Axios pour l'API des stagiaires
 const internApi = axios.create({
-    baseURL: 'http://localhost:8000/api/recruiter/intern',
+    baseURL: 'http://localhost:8000/recruiter/intern',
 });
 
 // Fonction pour rafraîchir le token
@@ -98,7 +98,7 @@ export const updateStagiaire = async (id, formData) => {
             'Content-Type': 'multipart/form-data',
         };
 
-        const res = await internApi.put(`/${id}`, formData, { headers }); // Utiliser PUT pour la mise à jour
+        const res = await internApi.post(`/${id}`, formData, { headers }); 
         return res.data;
     } catch (error) {
         throw error;

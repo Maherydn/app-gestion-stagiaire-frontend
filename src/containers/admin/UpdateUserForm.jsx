@@ -28,7 +28,7 @@ const UpdateUserForm = () => {
                     setEmail(res.email || '');
                     setMatricule(res.matricule || '');
                     setRole(res.role || '');
-                    setDepartement(res.departement || '');
+                    setDepartement(res.departement.id || '');
                 }
             } catch (error) {
                 console.error('Erreur lors de la récupération des données', error);
@@ -45,12 +45,10 @@ const UpdateUserForm = () => {
                 username,
                 email,
                 password,
-                // departement,
-                roles: [role], // Assurez-vous que cela correspond au format attendu
-                matricule
+                departement: parseInt(departement, 10),
+                roles: [role], 
+                matricule: parseInt(matricule, 10)
             };
-    
-            console.log('Données envoyées:', userData); // Vérifiez les données envoyées
     
             try {
                 const res = await updateUser(id, userData);
@@ -60,6 +58,8 @@ const UpdateUserForm = () => {
             }
         }
     };
+    
+    console.log();
     
 
     return (
@@ -86,7 +86,7 @@ const UpdateUserForm = () => {
                 />
             </div>
 
-            <div>
+            {/* <div>
                 <Input
                     nameAndId={'password'}
                     type={'password'}
@@ -95,7 +95,7 @@ const UpdateUserForm = () => {
                     value={password}
                     setValue={(e) => setPassword(e.target.value)}
                 />
-            </div>
+            </div> */}
 
             <div>
                 <Input
@@ -121,9 +121,9 @@ const UpdateUserForm = () => {
                     value={role}
                 >
                     <option value="">Choix rôle</option>
-                    <option value="admin">admin</option>
-                    <option value="recruteur">recruteur</option>
-                    <option value="superviseur">superviseur</option>
+                    <option value="ROLE_ADMIN">admin</option>
+                    <option value="ROLE_RECRUITER">recruteur</option>
+                    <option value="ROLE_SUPERVISOR">superviseur</option>
                 </select>
             </div>
 

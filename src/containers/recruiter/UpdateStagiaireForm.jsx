@@ -32,8 +32,6 @@ const UpdateStagiaireForm = () => {
             try {
                 const res = await fetchStagiaire(id)
                 setData(res)
-                console.log(res);
-                
 
                 if (res) {
                     setFullName(res.fullName || '')
@@ -41,7 +39,7 @@ const UpdateStagiaireForm = () => {
                     setPhone(res.phone || '')
                     setUniversity(res.university || '')
                     setStudyLevel(res.studyLevel || '')
-                    setDepartement(res.departement.name || '')
+                    setDepartement(res.departement.id || '')
                     setInteshipDuration(res.intershipDuration || '')
                     setIntershipStartAt(formatDate(res.intershipStartAt) || '')
                     setIntershipFinishAt(formatDate(res.intershipFinishAt) || '') 
@@ -63,6 +61,7 @@ const UpdateStagiaireForm = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        if (await confirm({ message: "Êtes-vous sûr de vouloir mettre à jour cet utilisateur ?" })) {
 
         try {
             const formData = new FormData();
@@ -71,6 +70,7 @@ const UpdateStagiaireForm = () => {
             formData.append('phone', phone);
             formData.append('university', university);
             formData.append('studyLevel', studyLevel);
+            formData.append('departement', departement);
             formData.append('intershipDuration', intershipDuration);
             formData.append('intershipStartAt', intershipStartAt);
             formData.append('intershipFinishAt', intershipFinishAt);
@@ -89,7 +89,10 @@ const UpdateStagiaireForm = () => {
             console.error('Erreur lors de la mise à jour du stagiaire :', error);
             toast.error('Erreur lors de la mise à jour du stagiaire.');
         }
+    }
     };
+
+    
 
     return (
         <>
